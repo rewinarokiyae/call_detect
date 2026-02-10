@@ -1,0 +1,46 @@
+project:
+  name: "ASVspoof5_Track1_NewModel"
+  output_dir: "/workspace/output"  # Vast.ai output path
+  seed: 42
+
+data:
+  root_vast: "/workspace/data/asvspoof5"
+  root_local: "D:/Subject/honors/ai_project/call_detect/data/2026_data"
+  train_proto: "ASVspoof5.train.metadata.txt"
+  dev_proto: "ASVspoof5.dev.metadata.txt"
+  eval_proto: "ASVspoof5.eval.metadata.txt"
+  sample_rate: 16000
+  max_len: 64000  # 4 seconds
+  batch_size: 32
+  num_workers: 4
+
+features:
+  use_wavlm: true
+  use_mel: true
+  use_phase: true
+  
+  wavlm:
+    model_name: "microsoft/wavlm-large"
+    freeze_feature_extractor: true
+    fine_tune_layers: 6
+  
+  mel:
+    n_mels: 80
+    n_fft: 1024
+    hop_length: 160
+    win_length: 400
+    spec_augment: false # Enable during training only
+
+model:
+  embed_dim: 128
+  fusion: "attention" # or 'gated'
+
+training:
+  epochs: 50
+  learning_rate: 1.0e-4
+  weight_decay: 1.0e-4
+  loss: "focal" # or 'bce'
+  focal_gamma: 2.0
+  mixed_precision: true
+  early_stopping_patience: 10
+  save_top_k: 3

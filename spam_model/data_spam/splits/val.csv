@@ -1,0 +1,4 @@
+file_id,agent_audio_path,customer_audio_path,label,transcript_agent,transcript_customer
+16,record_split/agent/speaker_0.wav,record_split/customer/speaker_1.wav,0,bonafide text,bonafide text
+9,record_split/agent/speaker_0.wav,record_split/customer/speaker_1.wav,1,scam text,scam text
+2,record_split/agent/speaker_0.wav,record_split/customer/speaker_1.wav,0,bonafide text,bonafide text

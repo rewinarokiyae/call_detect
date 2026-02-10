@@ -1,0 +1,76 @@
+project:
+  name: "CallDetect_SpamModel"
+  version: "1.0.0"
+  root_dir: "D:/Subject/honors/ai_project/call_detect/spam_model"
+
+paths:
+  raw_audio_dir: "D:/Subject/honors/ai_project/call_detect/record_split"
+  data_spam: "D:/Subject/honors/ai_project/call_detect/spam_model/data_spam"
+  metadata_file: "D:/Subject/honors/ai_project/call_detect/spam_model/data_spam/metadata.csv"
+  splits_dir: "D:/Subject/honors/ai_project/call_detect/spam_model/data_spam/splits"
+  checkpoints_dir: "D:/Subject/honors/ai_project/call_detect/spam_model/checkpoints"
+  evaluation_dir: "D:/Subject/honors/ai_project/call_detect/spam_model/evaluation"
+
+hardware:
+  device: "cuda"  # "cuda" or "cpu"
+  allow_tf32: false # 3050 limited support, safer false
+  gpu_vram_limit_gb: 4.0
+
+audio:
+  sample_rate: 16000
+  mono: true
+  format: "wav"
+
+models:
+  asr:
+    name: "openai/whisper-base"
+    batch_size: 4 # Conservative for 4GB VRAM
+    fp16: true
+    language: "en"
+  
+  embeddings:
+    name: "speechbrain/spkrec-ecapa-voxceleb"
+    batch_size: 16
+    device: "cuda" # Use cuda if available, but be capable of fallback or sequential run
+
+  classifier:
+    input_dim: 396 # 192*2 + 6*2 (updated text features)
+    hidden_dim: 128
+    dropout: 0.3
+    learning_rate: 0.001
+    epochs: 20
+    batch_size: 16
+    patience: 5 # Early stopping
+    threshold: 0.75 # Configurable scam threshold
+
+reporting:
+  risk_thresholds:
+    low: 0.30
+    medium: 0.60
+    high: 1.00
+
+features:
+  text:
+    sensitive_keywords:
+      - "otp"
+      - "pin"
+      - "cvv"
+      - "card number"
+      - "account number"
+      - "aadhaar"
+      - "upi"
+      - "password"
+      - "verification code"
+    urgency_keywords:
+      - "immediate"
+      - "block"
+      - "suspend"
+      - "expire"
+      - "unauthorized"
+      - "verify now"
+
+groq:
+  enabled: false
+  api_key: "YOUR_GROQ_API_KEY_HERE"
+  model: "llama3-70b-8192" 
+
