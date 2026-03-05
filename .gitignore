@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Environments
+# Environments - STACK IGNORES FIRST
 .env
 .venv
 env/
@@ -14,13 +14,24 @@ ENV/
 env.bak/
 venv.bak/
 
-# Project Specific
+# Project Specific - Large Directories
 data/
 record_split/
 uploads/
 pretrained_models/
-checkpoints/
-reports/
+
+# Specific exceptions for project folders (NOT env folders)
+!New_model/**/*.yaml
+!Local_Model/**/*.yaml
+!Local_Model/**/*.py
+!New_model/**/*.py
+!spam_model/**/*.json
+!spam_model/**/*.yaml
+!split_model/**/*.py
+
+# Checkpoints and Reports
+**/checkpoints/
+**/reports/
 
 # Audio
 *.wav
@@ -30,6 +41,11 @@ reports/
 # Logs
 *.log
 *.txt
+!*.txt # Allow generic text files but skip logs
+
+# Docker
+!Dockerfile
+!docker-compose.yml
 
 # VS Code
 .vscode/

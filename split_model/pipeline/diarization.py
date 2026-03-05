@@ -26,9 +26,17 @@ class ProductionDiarizer:
         import sys
         import types
         import torchaudio
+        
+        # Patch torchaudio.backend if missing
         if not hasattr(torchaudio, 'backend'):
             torchaudio.backend = types.ModuleType("backend")
             sys.modules["torchaudio.backend"] = torchaudio.backend
+            
+        # Patch list_audio_backends if missing (Removed in TorchAudio 2.1+)
+        if not hasattr(torchaudio, 'list_audio_backends'):
+            torchaudio.list_audio_backends = lambda: []
+            
+        # Also patch it inside the backend module just in case
         if not hasattr(torchaudio.backend, "list_audio_backends"):
             torchaudio.backend.list_audio_backends = lambda: []
         # -------------------

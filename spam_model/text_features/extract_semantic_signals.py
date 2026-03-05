@@ -48,3 +48,35 @@ class TextFeatureExtractor:
             relationship_detected,
             relationship_confidence
         ], dtype=np.float32)
+
+    def extract_triggers(self, text):
+        """
+        Returns the specific sentences that triggered the flags.
+        """
+        text_lower = text.lower()
+        sentences = re.split(r'(?<=[.!?]) +', text)
+        
+        triggers = {
+            'sensitive': [],
+            'urgency': []
+        }
+        
+        for sent in sentences:
+            sent_lower = sent.lower()
+            # Check Sensitive
+            found_sensitive = [k for k in self.sensitive_keywords if k in sent_lower]
+            if found_sensitive:
+                triggers['sensitive'].append({
+                    'sentence': sent,
+                    'keywords': found_sensitive
+                })
+                
+            # Check Urgency
+            found_urgency = [k for k in self.urgency_keywords if k in sent_lower]
+            if found_urgency:
+                triggers['urgency'].append({
+                    'sentence': sent,
+                    'keywords': found_urgency
+                })
+                
+        return triggers

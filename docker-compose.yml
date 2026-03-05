@@ -1,0 +1,12 @@
+services:
+  call-detect-ai:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./uploads:/app/uploads
+      - ./pretrained_models:/app/pretrained_models
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped

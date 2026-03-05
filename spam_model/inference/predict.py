@@ -8,6 +8,18 @@ import logging
 # Suppress Transformers Warnings
 logging.getLogger("transformers").setLevel(logging.ERROR)
 
+# --- LOCAL PATCH FOR TORCHAUDIO 2.1+ ---
+import types
+import torchaudio
+if not hasattr(torchaudio, 'backend'):
+    torchaudio.backend = types.ModuleType("backend")
+    sys.modules["torchaudio.backend"] = torchaudio.backend
+if not hasattr(torchaudio, 'list_audio_backends'):
+    torchaudio.list_audio_backends = lambda: []
+if not hasattr(torchaudio.backend, "list_audio_backends"):
+    torchaudio.backend.list_audio_backends = lambda: []
+# ---------------------------------------
+
 # Ensure checking path for importsh
 # __file__ = spam_model/inference/predict.py
 # dirname = spam_model/inference
@@ -147,11 +159,19 @@ def main(agent_audio, customer_audio, spoof_score=0.0, spoof_verdict="UNKNOWN"):
             sensitive_keywords = ["otp", "pin", "cvv", "card number", "account number", "password"]
             
             agent_lower = agent_msg.lower() if agent_msg else ""
-            if any(k in agent_lower for k in urgency_keywords):
-                risk_indicators.append("Urgency indicators detected in Agent speech")
-            if any(k in agent_lower for k in sensitive_keywords):
-                found_keywords = [k for k in sensitive_keywords if k in agent_lower]
-                risk_indicators.append(f"Agent requested sensitive information: {', '.join(found_keywords)}")
+            
+            # --- NEW: Extract Specific Trigger Sentences ---
+            triggers = text_extractor.extract_triggers(agent_msg)
+            
+            # 1. Urgency Triggers
+            if triggers['urgency']:
+                for t in triggers['urgency']:
+                    risk_indicators.append(f"Urgency detected in: \"{t['sentence']}\" (Keywords: {', '.join(t['keywords'])})")
+            
+            # 2. Sensitive Info Request Triggers
+            if triggers['sensitive']:
+                for t in triggers['sensitive']:
+                     risk_indicators.append(f"Sensitive request detected in: \"{t['sentence']}\" (Keywords: {', '.join(t['keywords'])})")
             
             # Add Spoof Indicators
             if spoof_score > 0.5:
