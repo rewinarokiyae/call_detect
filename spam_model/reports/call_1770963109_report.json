@@ -1,0 +1,27 @@
+{
+  "call_id": "call_1770963109",
+  "timestamp": "2026-02-13T11:41:49.764910",
+  "agent_type": "Human",
+  "caller_classification": "Likely Scam",
+  "risk_level": "High",
+  "scam_probability": 0.8456,
+  "risk_score": 84,
+  "information_shared": {
+    "otp": true,
+    "pin": false,
+    "account_number": false,
+    "cvv": false,
+    "upi_id": false,
+    "aadhaar": false
+  },
+  "risk_indicators": [
+    "Sensitive request detected in: \"I'll send a one time password to your registered mobile number.\" (Keywords: password)",
+    "Urgency detected in: \"Once the investigation is completed, the amount will be created back if the transaction is confirmed as unauthorized.\" (Keywords: unauthorized)",
+    "Urgency detected in: \"I will temporarily block your debit card and raise a dispute request.\" (Keywords: block)",
+    "Customer revealed OTP",
+    "Sensitive request detected in: \"Can you tell me the last four digits of your account number?\" (Keywords: account number)",
+    "Sensitive request detected in: \"I recommend changing your account and card pin immediately.\" (Keywords: pin)",
+    "Urgency detected in: \"I recommend changing your account and card pin immediately.\" (Keywords: immediate)"
+  ],
+  "system_conclusion": "This call shows strong indicators of social engineering fraud. Highly suspicious behavior detected."
+}

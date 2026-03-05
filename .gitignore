@@ -30,8 +30,13 @@ pretrained_models/
 !split_model/**/*.py
 
 # Checkpoints and Reports
-**/checkpoints/
-**/reports/
+**/checkpoints/*
+!**/checkpoints/*.pth
+!**/checkpoints/*.pkl
+
+**/reports/*
+!**/reports/*.json
+!**/reports/*.md
 
 # Audio
 *.wav

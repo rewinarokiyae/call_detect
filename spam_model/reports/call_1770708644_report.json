@@ -1,0 +1,23 @@
+{
+  "call_id": "call_1770708644",
+  "timestamp": "2026-02-10T13:00:44.604531",
+  "agent_type": "Human",
+  "caller_classification": "Likely Scam",
+  "risk_level": "High",
+  "scam_probability": 0.8405,
+  "risk_score": 84,
+  "information_shared": {
+    "otp": true,
+    "pin": false,
+    "account_number": false,
+    "cvv": false,
+    "upi_id": false,
+    "aadhaar": false
+  },
+  "risk_indicators": [
+    "Customer revealed OTP",
+    "Agent requested sensitive information",
+    "Urgency indicators detected in Agent speech"
+  ],
+  "system_conclusion": "This call shows strong indicators of social engineering fraud. Highly suspicious behavior detected."
+}

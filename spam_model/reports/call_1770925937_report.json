@@ -1,0 +1,26 @@
+{
+  "call_id": "call_1770925937",
+  "timestamp": "2026-02-13T01:22:17.501349",
+  "agent_type": "AI Robot",
+  "caller_classification": "Likely Scam",
+  "risk_level": "High",
+  "scam_probability": 0.7957,
+  "risk_score": 79,
+  "information_shared": {
+    "otp": false,
+    "pin": false,
+    "account_number": false,
+    "cvv": false,
+    "upi_id": false,
+    "aadhaar": false
+  },
+  "risk_indicators": [
+    "Sensitive request detected in: \"Can you confirm your account number, please?\" (Keywords: account number)",
+    "Sensitive request detected in: \"Can you please confirm your account number?\" (Keywords: account number)",
+    "Sensitive request detected in: \"If you could just confirm your account number, we can proceed.\" (Keywords: account number)",
+    "Sensitive request detected in: \"Can you please just take a minute to confirm your account number?\" (Keywords: account number)",
+    "Potential Voice Spoofing Detected (Score: 0.96)",
+    "Sensitive request detected in: \"If you don't confirm your account number, we'll have to flag your account as suspicious and you might experience some issues with your transactions.\" (Keywords: account number)"
+  ],
+  "system_conclusion": "This call shows strong indicators of social engineering fraud. Highly suspicious behavior detected."
+}

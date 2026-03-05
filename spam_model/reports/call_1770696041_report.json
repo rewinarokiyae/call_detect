@@ -1,0 +1,21 @@
+{
+  "call_id": "call_1770696041",
+  "timestamp": "2026-02-10T09:30:41.735781",
+  "agent_type": "AI Robot",
+  "caller_classification": "Likely Scam",
+  "risk_level": "High",
+  "scam_probability": 0.7234,
+  "risk_score": 72,
+  "information_shared": {
+    "otp": false,
+    "pin": false,
+    "account_number": false,
+    "cvv": false,
+    "upi_id": false,
+    "aadhaar": false
+  },
+  "risk_indicators": [
+    "Potential Voice Spoofing Detected (Score: 0.86)"
+  ],
+  "system_conclusion": "This call shows strong indicators of social engineering fraud. Highly suspicious behavior detected."
+}

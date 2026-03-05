@@ -1,0 +1,20 @@
+{
+  "call_id": "call_1770651286",
+  "timestamp": "2026-02-09T21:04:46.687346",
+  "caller_classification": "Legitimate",
+  "risk_level": "Low",
+  "scam_probability": 0.1558,
+  "risk_score": 15,
+  "information_shared": {
+    "otp": false,
+    "pin": false,
+    "account_number": false,
+    "cvv": false,
+    "upi_id": false,
+    "aadhaar": false
+  },
+  "risk_indicators": [
+    "Potential Voice Spoofing Detected (Score: 0.90)"
+  ],
+  "system_conclusion": "No sensitive information was shared and no scam behavior was detected. Likely legitimate."
+}

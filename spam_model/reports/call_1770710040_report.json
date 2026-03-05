@@ -1,0 +1,21 @@
+{
+  "call_id": "call_1770710040",
+  "timestamp": "2026-02-10T13:24:00.503527",
+  "agent_type": "Human",
+  "caller_classification": "Suspicious",
+  "risk_level": "Medium",
+  "scam_probability": 0.4337,
+  "risk_score": 43,
+  "information_shared": {
+    "otp": false,
+    "pin": false,
+    "account_number": false,
+    "cvv": false,
+    "upi_id": false,
+    "aadhaar": false
+  },
+  "risk_indicators": [
+    "Agent requested sensitive information"
+  ],
+  "system_conclusion": "This call contains some suspicious elements but is not definitively a scam. Proceed with caution."
+}

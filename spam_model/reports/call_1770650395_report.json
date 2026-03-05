@@ -1,0 +1,21 @@
+{
+  "call_id": "call_1770650395",
+  "timestamp": "2026-02-09T20:49:55.223340",
+  "caller_classification": "Suspicious",
+  "risk_level": "Medium",
+  "scam_probability": 0.4563,
+  "risk_score": 45,
+  "information_shared": {
+    "otp": true,
+    "pin": false,
+    "account_number": false,
+    "cvv": false,
+    "upi_id": false,
+    "aadhaar": false
+  },
+  "risk_indicators": [
+    "Customer revealed OTP",
+    "Potential Voice Spoofing Detected (Score: 0.89)"
+  ],
+  "system_conclusion": "This call contains some suspicious elements but is not definitively a scam. Proceed with caution."
+}

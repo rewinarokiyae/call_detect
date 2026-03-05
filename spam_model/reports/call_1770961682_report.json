@@ -1,0 +1,19 @@
+{
+  "call_id": "call_1770961682",
+  "timestamp": "2026-02-13T11:18:02.127906",
+  "agent_type": "Human",
+  "caller_classification": "Legitimate",
+  "risk_level": "Low",
+  "scam_probability": 0.1526,
+  "risk_score": 15,
+  "information_shared": {
+    "otp": false,
+    "pin": false,
+    "account_number": false,
+    "cvv": false,
+    "upi_id": false,
+    "aadhaar": false
+  },
+  "risk_indicators": [],
+  "system_conclusion": "No sensitive information was shared and no scam behavior was detected. Likely legitimate."
+}

@@ -1,0 +1,21 @@
+{
+  "call_id": "call_1772162646",
+  "timestamp": "2026-02-27T08:54:06.937370",
+  "agent_type": "Human",
+  "caller_classification": "Likely Scam",
+  "risk_level": "High",
+  "scam_probability": 0.8411,
+  "risk_score": 84,
+  "information_shared": {
+    "otp": true,
+    "pin": false,
+    "account_number": false,
+    "cvv": false,
+    "upi_id": false,
+    "aadhaar": false
+  },
+  "risk_indicators": [
+    "Customer revealed OTP"
+  ],
+  "system_conclusion": "This call shows strong indicators of social engineering fraud. Highly suspicious behavior detected."
+}

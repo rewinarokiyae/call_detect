@@ -1,0 +1,22 @@
+{
+  "call_id": "call_1770706213",
+  "timestamp": "2026-02-10T12:20:13.042359",
+  "agent_type": "Human",
+  "caller_classification": "Suspicious",
+  "risk_level": "Medium",
+  "scam_probability": 0.4948,
+  "risk_score": 49,
+  "information_shared": {
+    "otp": false,
+    "pin": false,
+    "account_number": false,
+    "cvv": false,
+    "upi_id": false,
+    "aadhaar": false
+  },
+  "risk_indicators": [
+    "Agent requested sensitive information",
+    "Urgency indicators detected in Agent speech"
+  ],
+  "system_conclusion": "This call contains some suspicious elements but is not definitively a scam. Proceed with caution."
+}

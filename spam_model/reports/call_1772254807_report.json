@@ -1,0 +1,24 @@
+{
+  "call_id": "call_1772254807",
+  "timestamp": "2026-02-28T10:30:07.331224",
+  "agent_type": "AI Robot",
+  "caller_classification": "Likely Scam",
+  "risk_level": "High",
+  "scam_probability": 0.6135,
+  "risk_score": 61,
+  "information_shared": {
+    "otp": false,
+    "pin": false,
+    "account_number": false,
+    "cvv": false,
+    "upi_id": false,
+    "aadhaar": false
+  },
+  "risk_indicators": [
+    "Sensitive request detected in: \"Can you please confirm your account number for me?\" (Keywords: account number)",
+    "Sensitive request detected in: \"Can you just confirm your account number for me?\" (Keywords: account number)",
+    "Sensitive request detected in: \"Can you please confirm your account number?\" (Keywords: account number)",
+    "Potential Voice Spoofing Detected (Score: 0.95)"
+  ],
+  "system_conclusion": "This call shows strong indicators of social engineering fraud. Highly suspicious behavior detected."
+}

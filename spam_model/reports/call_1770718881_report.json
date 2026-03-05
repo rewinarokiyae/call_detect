@@ -1,0 +1,22 @@
+{
+  "call_id": "call_1770718881",
+  "timestamp": "2026-02-10T15:51:21.805795",
+  "agent_type": "AI Robot",
+  "caller_classification": "Likely Scam",
+  "risk_level": "High",
+  "scam_probability": 0.623,
+  "risk_score": 62,
+  "information_shared": {
+    "otp": false,
+    "pin": false,
+    "account_number": false,
+    "cvv": false,
+    "upi_id": false,
+    "aadhaar": false
+  },
+  "risk_indicators": [
+    "Agent requested sensitive information: account number",
+    "Potential Voice Spoofing Detected (Score: 0.89)"
+  ],
+  "system_conclusion": "This call shows strong indicators of social engineering fraud. Highly suspicious behavior detected."
+}
