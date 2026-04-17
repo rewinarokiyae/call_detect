@@ -1,0 +1,83 @@
+Pipeline Started
+============================================================
+UNIFIED CALL DETECTION PIPELINE
+============================================================
+Input File: data\live_recordings\call1.mp3
+
+>>> [STEP 0] Cleaning up previous run data...
+Cleared: D:\Subject\honors\ai_project\call_detect\record_split\agent
+Cleared: D:\Subject\honors\ai_project\call_detect\record_split\customer
+
+>>> [STEP 1] Running Split & Local Spoof Detection...
+DEBUG: Found Spoof Score Line: Speaker 0 Raw Spoof Score: 0.9351, Median: 0.0015
+DEBUG: Found Spoof Score Line: Speaker 1 Raw Spoof Score: 0.9465, Median: 0.0365
+DEBUG: Found Agent Path: record_split\agent\speaker_1.wav
+DEBUG: Final Agent Path: record_split\agent\speaker_1.wav
+DEBUG: Attempting fallback to record_split/customer...
+DEBUG: Fallback Customer Path: D:\Subject\honors\ai_project\call_detect\record_split\customer\speaker_0.wav
+
+[PIPELINE] Detected Agent Path: record_split\agent\speaker_1.wav
+[PIPELINE] Detected Customer Path: D:\Subject\honors\ai_project\call_detect\record_split\customer\speaker_0.wav
+[PIPELINE] Detected Spoof Score: 0.9465
+
+>>> [STEP 3] Running Spam Detection & Reporting...
+Executing: D:\Subject\honors\ai_project\call_detect\venv_gpu\Scripts\python.exe D:\Subject\honors\ai_project\call_detect\spam_model\inference\predict.py --agent record_split\agent\speaker_1.wav --customer D:\Subject\honors\ai_project\call_detect\record_split\customer\speaker_0.wav --spoof_score 0.9465 --spoof_verdict SPOOF
+D:\Subject\honors\ai_project\call_detect\venv_gpu\Lib\site-packages\speechbrain\utils\autocast.py:188: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+wrapped_fwd = torch.cuda.amp.custom_fwd(fwd, cast_inputs=cast_inputs)
+==================================================
+SCAM DETECTION PIPELINE: INFERENCE START
+==================================================
+[1/5] Loading Audio...
+[2/5] Running ASR (Whisper)...
+Loading ASR Model: base on cuda...
+Transcribing record_split\agent\speaker_1.wav...
+ASR Model unloaded.
+> Agent: Hello, this is your bank calling about suspicious ...
+Loading ASR Model: base on cuda...
+Transcribing D:\Subject\honors\ai_project\call_detect\record_split\customer\speaker_0.wav...
+ASR Model unloaded.
+> Customer: Oh no, I didn't expect this. What's going on? No, ...
+[3/5] Extracting Audio Embeddings...
+Loading Embedding Model: speechbrain/spkrec-ecapa-voxceleb on cuda...
+Embedding Model unloaded.
+Loading Embedding Model: speechbrain/spkrec-ecapa-voxceleb on cuda...
+Embedding Model unloaded.
+[4/5] Extracting Text Features...
+[5/5] Fusion & Classification...
+
+==================================================
+FINAL RESULT: BONAFIDE
+Probability: 0.6135 (Threshold: 0.75)
+==================================================
+[6/6] Generating Security Report...
+
+==================================================
+CALL SECURITY ANALYSIS REPORT
+Call ID: call_1772254807
+Date: 2026-02-28 10:30:07
+==================================================
+
+[SUMMARY]
+Classification: LIKELY SCAM
+Risk Level:     HIGH (Score: 61/100)
+Probability:    61.35%
+
+[CONCLUSION]
+This call shows strong indicators of social engineering fraud. Highly suspicious behavior detected.
+
+[SENSITIVE INFORMATION SHARED]
+No sensitive information leakage detected.
+
+[RISK INDICATORS]
+- Sensitive request detected in: "Can you please confirm your account number for me?" (Keywords: account number)
+- Sensitive request detected in: "Can you just confirm your account number for me?" (Keywords: account number)
+- Sensitive request detected in: "Can you please confirm your account number?" (Keywords: account number)
+- Potential Voice Spoofing Detected (Score: 0.95)
+
+==================================================
+Report saved to: D:\Subject\honors\ai_project\call_detect\spam_model\reports
+OUTPUT_JSON: D:\Subject\honors\ai_project\call_detect\spam_model\reports\call_1772254807_report.json
+
+============================================================
+PIPELINE COMPLETE
+============================================================
